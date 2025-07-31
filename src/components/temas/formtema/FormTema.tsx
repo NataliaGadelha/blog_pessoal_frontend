@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import type Tema from "../../../models/Tema";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import { ArrowsCounterClockwise } from "@phosphor-icons/react";
 
 function FormTema() {
 
@@ -111,8 +112,7 @@ function FormTema() {
                     />
                 </div>
                 <button
-                    className="rounded text-slate-100 bg-ligth-green
-                           hover:bg-emerald  w-1/2 py-2 mx-auto flex justify-center"
+                    className="w-1/3 flex items-center justify-between py-1.5 px-5 rounded-lg font-medium text-white bg-gradient-to-r from-teal-400 to-ligth-green hover:from-ligth-green hover:to-teal-400 shadow-sm mx-auto"
                     type="submit">
                     {isLoading ?
                         <RotatingLines
@@ -125,6 +125,7 @@ function FormTema() {
                         <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
 
                     }
+                    <ArrowsCounterClockwise size={32} />
                 </button>
             </form>
         </div>

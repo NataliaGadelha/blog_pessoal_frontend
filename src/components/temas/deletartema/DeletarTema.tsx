@@ -5,6 +5,7 @@ import { AuthContext } from "../../../contexts/AuthContext"
 import type Tema from "../../../models/Tema"
 import { buscar, deletar } from "../../../services/Service"
 import { RotatingLines } from "react-loader-spinner"
+import { Bookmarks, CheckCircle, XCircle } from "@phosphor-icons/react"
 
 function DeletarTema() {
 
@@ -78,21 +79,25 @@ function DeletarTema() {
             <h1 className='text-4xl text-center my-4'>Deletar tema</h1>
             <p className='text-center font-semibold mb-4'>
                 Você tem certeza de que deseja apagar o tema a seguir?</p>
-            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-                <header 
-                    className='py-2 px-6 bg-emerald text-white font-bold text-2xl'>
-                    Tema
-                </header>
-                <p className='p-8 text-3xl bg-emerald-50 h-full'>{tema.descricao}</p>
-                <div className="flex">
+            <div  className="flex flex-col justify-between rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-white">
+                    <header 
+                        className="flex items-center justify-between py-3 px-6 text-gray-500 font-bold text-2xl">
+                        Tema
+                        <Bookmarks size={32} weight="light" />
+                    </header>
+                <hr className="border-slate-300 mx-4" />
+                <div className="p-5 flex-1">
+                <p className="text-xl text-gray-500">{tema.descricao || "Sem descrição"}</p>
+                </div>
+                <div className="flex gap-3 px-4 pb-4 pt-2">
                     <button 
-                        className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2'
+                        className="w-full flex items-center justify-between py-1.5 px-5 rounded-lg font-medium text-white bg-gradient-to-r from-rose-500 to-red-600 hover:brightness-90 transition-all shadow-sm"
                         onClick={retornar}>
                         Não
+                        <XCircle size={32} />
                     </button>
                     <button 
-                        className='w-full text-slate-100 bg-emerald 
-                                   hover:bg-ligth-green flex items-center justify-center'
+                        className="w-full flex items-center justify-between py-1.5 px-5 rounded-lg font-medium text-white bg-gradient-to-r from-teal-400 to-ligth-green hover:from-ligth-green hover:to-teal-400 transition-all shadow-sm"
                                    onClick={deletarTema}>
                         {isLoading ?
                             <RotatingLines
@@ -104,6 +109,7 @@ function DeletarTema() {
                             /> :
                             <span>Sim</span>
                         }
+                        <CheckCircle size={32} />
                     </button>
                 </div>
             </div>

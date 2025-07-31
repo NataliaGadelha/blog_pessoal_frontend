@@ -9,7 +9,7 @@ interface CardTemasProps {
 function CardTemas({ tema }: CardTemasProps) {
   return (
     <div className="flex flex-col justify-between rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-white">
-      <header className="flex items-center gap-45 py-3 px-6 text-gray-500 font-bold text-2xl">
+      <header className="flex items-center justify-between py-3 px-6 text-gray-500 font-bold text-2xl">
         Tema
         <Bookmarks size={32} weight="light" />
       </header>
@@ -22,7 +22,7 @@ function CardTemas({ tema }: CardTemasProps) {
         <Link to={`/editartema/${tema.id}`} className="flex-grow">
           <button
             type="button"
-            className="w-full flex items-center justify-center gap-5 py-1.5 rounded-lg font-medium text-white bg-gradient-to-r from-teal-400 to-ligth-green hover:from-ligth-green hover:to-teal-400 transition-all shadow-sm"
+            className="w-full flex items-center justify-between py-1.5 px-5 rounded-lg font-medium text-white bg-gradient-to-r from-teal-400 to-ligth-green hover:from-ligth-green hover:to-teal-400 transition-all shadow-sm"
           >
             Editar
             <PencilLine size={20} weight="light" />
@@ -32,7 +32,7 @@ function CardTemas({ tema }: CardTemasProps) {
         <Link to={`/deletartema/${tema.id}`} className="flex-grow">
           <button
             type="button"
-            className="w-full flex  justify-center gap-2 py-1.5 rounded-lg font-medium text-white bg-gradient-to-r from-rose-500 to-red-600 hover:brightness-90 transition-all shadow-sm"
+            className="w-full flex items-center justify-between py-1.5 px-5 rounded-lg font-medium text-white bg-gradient-to-r from-rose-500 to-red-600 hover:brightness-90 transition-all shadow-sm"
           >
             Deletar
             <Trash size={20} weight="regular" />
