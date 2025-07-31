@@ -37,10 +37,10 @@ function Navbar() {
             </div>
             )}
 
-            <div className='w-full bg-floresta text-white
+            {/* <div className='w-full bg-floresta text-white
                 flex justify-center py-4'>
 
-                <div className="container flex justify-between text-lg">
+                <div className="container flex justify-between text-lg ">
                     <Link to='/home' className="text-2xl font-bold">Blog Pessoal</Link>
 
                     <div className='flex gap-4'>
@@ -51,7 +51,47 @@ function Navbar() {
                         <Link to='' onClick={logout} className='hover:underline'>Sair</Link>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+            {
+                <div className="w-full bg-floresta text-white flex justify-center py-4">
+                    <div className="container flex flex-wrap justify-between items-center text-lg">
+                        <Link to="/home" className="text-2xl font-bold group relative inline-block transition-all duration-500 ease-out">
+                        <span>Blog Pessoal</span>
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+                        </Link>
+
+                        <div className="flex gap-6 flex-wrap items-center">
+                        {/* Postagens (pode virar link se quiser) */}
+                        <div className="group relative inline-block text-lg ">
+                            <span className="cursor-pointer">Postagens</span>
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+                        </div>
+
+                        <Link to="/temas" className="group relative inline-block hover:underline-none transition-all duration-500 ease-out">
+                            <span>Temas</span>
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+                        </Link>
+
+                        <Link to="/cadastrartema" className="group relative inline-block hover:underline-none transition-all duration-500 ease-out">
+                            <span>Cadastrar tema</span>
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+                        </Link>
+
+                        {/* Perfil */}
+                        <div className="group relative inline-block text-lg transition-all duration-500 ease-out">
+                            <span className="cursor-pointer">Perfil</span>
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+                        </div>
+
+                        <Link to="" onClick={logout} className="group relative inline-block hover:underline-none transition-all duration-500 ease-out">
+                            <span>Sair</span>
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+                        </Link>
+                        </div>
+                    </div>
+                    </div>
+            }
         </>
     )
 }
