@@ -46,7 +46,7 @@ function Navbar() {
 
                         <div className="flex gap-6 flex-wrap items-center">
                         <div className="group relative inline-block text-lg ">
-                            <span className="cursor-pointer">Postagens</span>
+                            <Link to='/postagens'>Postagens</Link>
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
                         </div>
 
@@ -61,7 +61,7 @@ function Navbar() {
                         </Link>
 
                         <div className="group relative inline-block text-lg transition-all duration-500 ease-out">
-                            <span className="cursor-pointer">Perfil</span>
+                            <Link to='/perfil' className='cursor-pointer'>Perfil</Link>
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
                         </div>
 

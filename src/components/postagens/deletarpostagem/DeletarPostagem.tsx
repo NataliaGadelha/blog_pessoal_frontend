@@ -2,30 +2,31 @@
 import { useState, useContext, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { AuthContext } from "../../../contexts/AuthContext"
-import type Tema from "../../../models/Tema"
+import type Postagem from "../../../models/Postagem"
 import { buscar, deletar } from "../../../services/Service"
 import { RotatingLines } from "react-loader-spinner"
 import { CheckCircle, XCircle } from "@phosphor-icons/react"
 
-function DeletarTema() {
+function DeletarPostagem() {
 
     const navigate = useNavigate()
 
-    const [tema, setTema] = useState<Tema>({} as Tema)
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    
-    const { usuario, handleLogout } = useContext(AuthContext)
-    const token = usuario.token
+    const [postagem, setPostagem] = useState<Postagem>({} as Postagem)
 
     const { id } = useParams<{ id: string }>()
 
+    const { usuario, handleLogout } = useContext(AuthContext)
+    const token = usuario.token
+
     async function buscarPorId(id: string) {
         try {
-            await buscar(`/temas/${id}`, setTema, {
+            await buscar(`/postagens/${id}`, setPostagem, {
                 headers: {
                     'Authorization': token
                 }
             })
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             if (error.toString().includes('403')) {
                 handleLogout()
@@ -46,23 +47,23 @@ function DeletarTema() {
         }
     }, [id])
 
-    async function deletarTema() {
+    async function deletarPostagem() {
         setIsLoading(true)
 
         try {
-            await deletar(`/temas/${id}`, {
+            await deletar(`/postagens/${id}`, {
                 headers: {
                     'Authorization': token
                 }
             })
 
-            alert('Tema apagado com sucesso')
+            alert('Postagem apagada com sucesso')
 
         } catch (error: any) {
             if (error.toString().includes('403')) {
                 handleLogout()
             }else {
-                alert('Erro ao deletar o tema.')
+                alert('Erro ao deletar a postagem.')
             }
         }
 
@@ -71,41 +72,43 @@ function DeletarTema() {
     }
 
     function retornar() {
-        navigate("/temas")
+        navigate("/postagens")
     }
     
     return (
         <div className='container w-1/3 mx-auto'>
-            <h1 className='text-4xl text-center my-4'>Deletar tema</h1>
+            <h1 className='text-4xl text-center my-4'>Deletar Postagem</h1>
+
             <p className='text-center font-semibold mb-4'>
-                Você tem certeza de que deseja apagar o tema a seguir?</p>
-            <div  className="flex flex-col justify-between rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-white">
-                    <header 
-                        className="flex items-center justify-between py-3 px-6 font-semibold text-floresta text-2xl">
-                        Tema
-                        <img
-                        src="https://img.icons8.com/?size=100&id=vtUrwWHRs3yd&format=png&color=52b788"
+                Você tem certeza de que deseja apagar a postagem a seguir?
+            </p>
+
+            <div className='flex flex-col justify-between rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-white'>
+                <header 
+                    className='flex items-center justify-between py-3 px-6 text-floresta font-semibold text-2xl'>
+                    Postagem
+                    <img
+                        src="https://img.icons8.com/?size=100&id=zVnY4LoD0Omq&format=png&color=52b788"
                         alt="ícone"
                         className="h-8 w-8 ml-auto "
-                        />
-                    </header>
+                    />
+                </header>
                 <hr className="border-slate-300 mx-4" />
-                <div className="p-5 flex-1">
-                <p className="text-xl text-gray-500">{tema.descricao || "Sem descrição"}</p>
+                <div className="p-5 flex-1 text-gray-500">
+                    <p className='text-xl h-full font-semibold text-floresta'>{postagem.titulo}</p>
+                    <p>{postagem.texto}</p>
                 </div>
                 <div className="flex gap-3 px-4 pb-4 pt-2">
                     <button 
-                        className="w-full flex items-center justify-between py-1.5 px-5 rounded-lg font-medium text-white 
-                        bg-gradient-to-r from-rose-500 to-red-600 hover:brightness-90 transition-all shadow-sm"
+                        className='w-full flex items-center justify-between py-1.5 px-4 rounded-lg font-medium text-white bg-gradient-to-r from-rose-500 to-red-600 hover:brightness-90 transition-all shadow-sm'
                         onClick={retornar}>
                         Não
                         <XCircle size={32} />
                     </button>
                     <button 
-                        className="w-full flex items-center justify-between py-1.5 px-5 rounded-lg font-medium text-white 
-                        bg-gradient-to-r from-teal-400 to-ligth-green hover:from-ligth-green hover:to-teal-400 
-                        transition-all shadow-sm"
-                                   onClick={deletarTema}>
+                        className='w-full flex items-center justify-between py-1.5 px-4 rounded-lg font-medium text-white bg-gradient-to-r from-teal-400 to-ligth-green hover:from-ligth-green hover:to-teal-400 transition-all shadow-sm'
+                        onClick={deletarPostagem}>
+                        
                         {isLoading ?
                             <RotatingLines
                                 strokeColor="white"
@@ -123,4 +126,5 @@ function DeletarTema() {
         </div>
     )
 }
-export default DeletarTema
+
+export default DeletarPostagem

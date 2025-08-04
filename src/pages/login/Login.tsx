@@ -81,7 +81,7 @@ function Login() {
                         }
                     </button>
 
-                    <hr className="border-slate-800 w-full" />
+                    <hr className="border-slate-600 w-full" />
 
                     <p>
                         Ainda não tem uma conta?{' '}

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import type Tema from "../../../models/Tema";
-import { Bookmarks, PencilLine, Trash } from "@phosphor-icons/react";
+import { PencilLine, Trash } from "@phosphor-icons/react";
 
 interface CardTemasProps {
   tema: Tema;
@@ -9,9 +9,13 @@ interface CardTemasProps {
 function CardTemas({ tema }: CardTemasProps) {
   return (
     <div className="flex flex-col justify-between rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-white">
-      <header className="flex items-center justify-between py-3 px-6 text-gray-500 font-bold text-2xl">
+      <header className="flex items-center justify-between py-3 px-6 font-semibold text-floresta text-2xl">
         Tema
-        <Bookmarks size={32} weight="light" />
+                    <img
+                        src="https://img.icons8.com/?size=100&id=vtUrwWHRs3yd&format=png&color=52b788"
+                        alt="ícone"
+                        className="h-8 w-8 ml-auto "
+                    />
       </header>
         <hr className="border-slate-300 mx-4" />
       <div className="p-5 flex-1">
