@@ -1,4 +1,3 @@
-import { DiscordLogoIcon, GithubLogoIcon, LinkedinLogoIcon} from '@phosphor-icons/react'
 import { type ReactNode, useContext } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
 
@@ -21,17 +20,29 @@ function Footer() {
                             Blog Pessoal Natália Gadelha | Copyright: {data}
                         </p>
                     <p className='text-lg'>Acesse minhas redes sociais</p>
-                        <div className='flex gap-2'>
+                    <div className='flex gap-2'>
                             <a href="https://www.linkedin.com/in/natalia-gadelha" target="_blank">
-                                <LinkedinLogoIcon size={48} weight='duotone' />
+                                <img
+                                    src="https://img.icons8.com/?size=100&id=447&format=png&color=FFFFFF"
+                                    alt="ícone"
+                                    className="h-12 w-12 ml-auto"
+                                />
                             </a>
                             <a href="https://github.com/NataliaGadelha" target="_blank">
-                                <GithubLogoIcon size={48} weight='duotone' />
+                            <img
+                                    src="https://img.icons8.com/?size=100&id=12598&format=png&color=FFFFFF"
+                                    alt="ícone"
+                                    className="h-12 w-12 ml-auto"
+                                />
                             </a>
                             <a href="https://discord.com/users/1049519666248298586" target="_blank">
-                                <DiscordLogoIcon size={48} weight='duotone' />
+                                <img
+                                    src="https://img.icons8.com/?size=100&id=gxdxl0oMFoSA&format=png&color=FFFFFF"
+                                    alt="ícone"
+                                    className="h-12 w-12 ml-auto"
+                                />
                             </a>
-                        </div>
+                    </div>
                 </div>
             </div>
         )
