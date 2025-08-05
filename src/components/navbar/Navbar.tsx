@@ -1,43 +1,27 @@
-import { useContext } from "react";
+import { type ReactNode, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/AuthContext";
-import { useState } from "react";
-
+import ToastAlerta from "../../utils/ToastAlerta";
 
 function Navbar() {
 
     const navigate = useNavigate();
 
-    const [mensagem, setMensagem] = useState("");
-    const [mostrarMensagem, setMostrarMensagem] = useState(false);
-
-    const { handleLogout } = useContext(AuthContext)
+    const { usuario, handleLogout } = useContext(AuthContext)
 
     function logout() {
 
         handleLogout()
-        setMensagem("O usuário foi desconectado com sucesso!");
-        setMostrarMensagem(true);
-
-        setTimeout(() => {
-            setMostrarMensagem(false);
-        }, 3000);
-
-        navigate('/');
+        ToastAlerta('O Usuário foi desconectado com sucesso!', "sucesso")
+        navigate('/')
     }
     
-    return (
-        <>
-            {mostrarMensagem && (
-            <div className="fixed top-4 right-4 z-50">
-                <div className="p-3 bg-green-100 border-l-4 border-green-500 text-green-700 rounded shadow max-w-sm">
-                <p className="font-bold">Sucesso!</p>
-                <p>{mensagem}</p>
-                </div>
-            </div>
-            )}
+    let component: ReactNode
 
-            {
+    if (usuario.token !== "") {
+
+        component = (
+
                 <div className="w-full bg-floresta text-white flex justify-center py-4">
                     <div className="container flex flex-wrap justify-between items-center text-lg">
                         <Link to="/home" className="text-2xl font-bold group relative inline-block">
@@ -71,8 +55,14 @@ function Navbar() {
                         </Link>
                         </div>
                     </div>
-                    </div>
-            }
+                </div>
+            )
+
+    }
+
+    return (
+        <>
+            { component }
         </>
     )
 }
